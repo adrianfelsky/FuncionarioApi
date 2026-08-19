@@ -7,4 +7,9 @@
     <RootNamespace>_01_Presentation</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\02-Application\02-Application.csproj" />
+    <ProjectReference Include="..\03-Infrastructure\03-Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
