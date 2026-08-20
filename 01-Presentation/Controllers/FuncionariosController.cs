@@ -1,7 +1,6 @@
 ﻿using _02_Application.DTOs;
 using _02_Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace _01_Presentation.Controllers;
 
@@ -21,7 +20,27 @@ public class FuncionariosController : ControllerBase
     {
         var result = await _service.CreateAsync(dto);
 
-        // Retorna HTTP 201 (Created) com os dados recém-salvos
-        return StatusCode(201, result);
+        return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var result = await _service.GetAllAsync();
+        return Ok(result);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        try
+        {
+            var result = await _service.GetByIdAsync(id);
+            return Ok(result);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
     }
 }
