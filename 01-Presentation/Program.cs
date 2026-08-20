@@ -5,6 +5,7 @@ using _03_Infrastructure.Repositories;
 using _04_Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,11 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API de gerenciamento em Clean Architecture",
         Version = "v1"
     });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+
 });
 
 var app = builder.Build();
