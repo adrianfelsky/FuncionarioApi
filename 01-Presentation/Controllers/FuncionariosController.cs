@@ -1,5 +1,6 @@
 ﻿using _02_Application.DTOs;
 using _02_Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ public class FuncionariosController : ControllerBase
     /// <summary>
     /// Cadastra um novo funcionário no sistema.
     /// </summary>
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(FuncionarioOutputDto), 201)]
     [ProducesResponseType(400)]
@@ -62,6 +64,7 @@ public class FuncionariosController : ControllerBase
     /// <summary>
     /// Atualiza os dados de um funcionário existente.
     /// </summary>
+    [Authorize]
     [HttpPut("{id}")]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
@@ -81,6 +84,7 @@ public class FuncionariosController : ControllerBase
     /// <summary>
     /// Remove um funcionário do banco de dados.
     /// </summary>
+    [Authorize]
     [HttpDelete("{id}")]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
