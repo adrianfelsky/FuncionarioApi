@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Funcionários API",
-        Description = "API de gerenciamento em Clean Architecture",
+        Description = "API de gerenciamento de funcionários.",
         Version = "v1"
     });
 
