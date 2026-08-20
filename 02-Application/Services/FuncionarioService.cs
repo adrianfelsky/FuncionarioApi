@@ -43,7 +43,21 @@ public class FuncionarioService : IFuncionarioService
 
         return MapearParaOutput(funcionario);
     }
-    public Task UpdateAsync(int id, FuncionarioInputDto dto) => throw new System.NotImplementedException();
+    public async Task UpdateAsync(int id, FuncionarioInputDto dto)
+    {
+        var funcionario = await _repository.GetByIdAsync(id);
+
+        if (funcionario == null)
+            throw new KeyNotFoundException("Funcionário não encontrado."); 
+
+        funcionario.Nome = dto.Nome;
+        funcionario.Cargo = dto.Cargo;
+        funcionario.Salario = dto.Salario;
+        funcionario.Departamento = dto.Departamento;
+
+        _repository.Update(funcionario);
+        await _repository.SaveChangesAsync();
+    }
     public Task DeleteAsync(int id) => throw new System.NotImplementedException();
     private Funcionario MapearParaEntidade(FuncionarioInputDto dto)
     {

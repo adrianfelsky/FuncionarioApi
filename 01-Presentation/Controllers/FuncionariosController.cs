@@ -43,4 +43,18 @@ public class FuncionariosController : ControllerBase
             return NotFound();
         }
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, [FromBody] FuncionarioInputDto dto)
+    {
+        try
+        {
+            await _service.UpdateAsync(id, dto);
+            return NoContent();
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }
