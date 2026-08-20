@@ -1,6 +1,7 @@
 using _03_Infrastructure.Data;
 using _04_Domain.Entities;
 using _04_Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,8 +27,18 @@ public class FuncionarioRepository : IFuncionarioRepository
         await _context.SaveChangesAsync();
     }
 
-    public Task<List<Funcionario>> GetAllAsync() => throw new System.NotImplementedException();
-    public Task<Funcionario?> GetByIdAsync(int id) => throw new System.NotImplementedException();
+    // --- MÉTODOS NOVOS (EX 12 E 13) ---
+    public async Task<List<Funcionario>> GetAllAsync()
+    {
+        return await _context.Funcionarios.ToListAsync();
+    }
+
+    public async Task<Funcionario?> GetByIdAsync(int id)
+    {
+        return await _context.Funcionarios.FirstOrDefaultAsync(f => f.Id == id);
+    }
+
+    // --- AINDA NÃO IMPLEMENTADOS ---
     public void Update(Funcionario funcionario) => throw new System.NotImplementedException();
     public void Delete(Funcionario funcionario) => throw new System.NotImplementedException();
 }
