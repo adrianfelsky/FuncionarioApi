@@ -57,4 +57,18 @@ public class FuncionariosController : ControllerBase
             return NotFound();
         }
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            await _service.DeleteAsync(id);
+            return NoContent();
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound(); 
+        }
+    }
 }

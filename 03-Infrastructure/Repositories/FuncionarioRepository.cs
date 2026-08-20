@@ -39,5 +39,8 @@ public class FuncionarioRepository : IFuncionarioRepository
     {
         _context.Funcionarios.Update(funcionario);
     }
-    public void Delete(Funcionario funcionario) => throw new System.NotImplementedException();
+    public void Delete(Funcionario funcionario)
+    {
+        _context.Funcionarios.Remove(funcionario);
+    }
 }

@@ -58,7 +58,16 @@ public class FuncionarioService : IFuncionarioService
         _repository.Update(funcionario);
         await _repository.SaveChangesAsync();
     }
-    public Task DeleteAsync(int id) => throw new System.NotImplementedException();
+    public async Task DeleteAsync(int id)
+    {
+        var funcionario = await _repository.GetByIdAsync(id);
+
+        if (funcionario == null)
+            throw new KeyNotFoundException("Funcionário não encontrado."); 
+
+        _repository.Delete(funcionario);
+        await _repository.SaveChangesAsync();
+    }
     private Funcionario MapearParaEntidade(FuncionarioInputDto dto)
     {
         return new Funcionario
