@@ -10,12 +10,12 @@ A solução está dividida em 4 camadas principais:
 * **04 - Domain:** O coração do software (Entidades puras e Interfaces).
 * **05 - Tests:** Projeto focado na garantia de qualidade da camada de Aplicação.
 
-## 🌿 Estrutura de Branches (Aviso ao Avaliador)
+## 🌿 Estrutura de Branches
 Para demonstrar o domínio sobre o controle de versão (Git) e manter o projeto base isolado, as funcionalidades extras (pontos bônus) não foram mescladas na branch principal. Elas podem ser validadas nas seguintes branches:
 
 * `master`: Contém o projeto base completo, valendo a nota máxima padrão (CRUD, EF Core, MySQL, Arquitetura, Documentação XML no Swagger).
-* `feature/ex18-20-jwt`: Contém a implementação Bônus 1 (Autenticação e Proteção de Rotas com JWT).
-* `feature/ex21-24-tests`: Contém a implementação Bônus 2 (Testes Unitários com xUnit e Moq para o `FuncionarioService`).
+* `feature/jwt`: Contém a implementação Bônus 1 (Autenticação e Proteção de Rotas com JWT).
+* `feature/tests`: Contém a implementação Bônus 2 (Testes Unitários com xUnit e Moq para o `FuncionarioService`).
 
 ## 🛠️ Tecnologias Utilizadas
 * C# e .NET 8
